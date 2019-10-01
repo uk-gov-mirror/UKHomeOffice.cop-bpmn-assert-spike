@@ -5,7 +5,8 @@ import org.camunda.bpm.engine.test.ProcessEngineRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.assertThat;
+import static java.util.Collections.singletonMap;
+import static org.camunda.bpm.engine.test.assertions.bpmn.BpmnAwareTests.*;
 
 
 @Deployment(resources = {"test-process.bpmn"})
@@ -15,9 +16,7 @@ public class BpmnProcessTest {
 
     @Test
     public void shouldStartProcess() {
-        final var runtimeService = processEngineRule.getRuntimeService();
-
-        final var processInstance = runtimeService.startProcessInstanceByKey("TestProcess");
+        final var processInstance = runtimeService().startProcessInstanceByKey("TestProcess", singletonMap("action", "frob"));
 
         assertThat(processInstance).isStarted()
                                    .isWaitingAt("FrobWidget");
@@ -25,12 +24,20 @@ public class BpmnProcessTest {
 
     @Test
     public void shouldCompleteUserTask() {
-        final var runtimeService = processEngineRule.getRuntimeService();
-        final var taskService = processEngineRule.getTaskService();
-        final var processInstance = runtimeService.startProcessInstanceByKey("TestProcess");
+        final var processInstance = runtimeService().startProcessInstanceByKey("TestProcess", singletonMap("action", "frob"));
 
-        final var task = taskService.createTaskQuery().taskName("Frob Widget").singleResult();
-        taskService.complete(task.getId());
+        assertThat(processInstance).isStarted();
+        complete(task());
+        assertThat(processInstance).isEnded();
+    }
+
+    @Test
+    public void shouldCompleteExternalTask() {
+        final var processInstance = runtimeService().startProcessInstanceByKey("TestProcess", singletonMap("action", "worfle"));
+
+        assertThat(processInstance).isStarted();
+        assertThat(processInstance).isWaitingAt("WorfleWidget");
+        complete(externalTask());
 
         assertThat(processInstance).isEnded();
     }
