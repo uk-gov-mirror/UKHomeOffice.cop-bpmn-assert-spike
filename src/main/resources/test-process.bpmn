@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://bpmn.io/schema/bpmn" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:yaoqiang="http://bpmn.sourceforge.net" exporter="Camunda Modeler" exporterVersion="3.3.4" expressionLanguage="http://www.w3.org/1999/XPath" id="Definitions_13zhemj" name="" targetNamespace="http://bpmn.io/schema/bpmn" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://bpmn.sourceforge.net/schemas/BPMN20.xsd">
+  <bpmn:process id="TestProcess" isClosed="false" isExecutable="true" name="Test Process" processType="None">
+    <bpmn:extensionElements>
+      <yaoqiang:description/>
+      <yaoqiang:pageFormat height="841.8897637795276" imageableHeight="831.8897637795276" imageableWidth="588.1102362204724" imageableX="5.0" imageableY="5.0" orientation="0" width="598.1102362204724"/>
+      <yaoqiang:page background="#FFFFFF" horizontalCount="1" verticalCount="1"/>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" isInterrupting="true" parallelMultiple="false">
+      <bpmn:outgoing>SequenceFlow_1h3euma</bpmn:outgoing>
+      <bpmn:outputSet/>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_0u3udms">
+      <bpmn:incoming>SequenceFlow_1p8i0nt</bpmn:incoming>
+      <bpmn:inputSet/>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1h3euma" sourceRef="StartEvent_1" targetRef="FrobWidget"/>
+    <bpmn:sequenceFlow id="SequenceFlow_1p8i0nt" sourceRef="FrobWidget" targetRef="EndEvent_0u3udms"/>
+    <bpmn:userTask completionQuantity="1" id="FrobWidget" implementation="##unspecified" isForCompensation="false" name="Frob Widget" startQuantity="1">
+      <bpmn:incoming>SequenceFlow_1h3euma</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1p8i0nt</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Yaoqiang_Diagram-TestProcess" name="Untitled Diagram" resolution="96.0">
+    <bpmndi:BPMNPlane bpmnElement="TestProcess">
+      <bpmndi:BPMNShape bpmnElement="StartEvent_1" id="Yaoqiang-StartEvent_1">
+        <dc:Bounds height="32.0" width="32.0" x="179.0" y="99.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="18.8" width="6.0" x="192.0" y="139.68"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="EndEvent_0u3udms" id="Yaoqiang-EndEvent_0u3udms">
+        <dc:Bounds height="32.0" width="32.0" x="562.0" y="99.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="18.8" width="6.0" x="575.0" y="139.68"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="FrobWidget" id="Yaoqiang-FrobWidget">
+        <dc:Bounds height="80.0" width="100.0" x="330.0" y="77.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="18.8" width="72.0" x="344.0" y="109.6"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1p8i0nt" id="Yaoqiang-SequenceFlow_1p8i0nt">
+        <di:waypoint x="430.3571428571428" y="117.0"/>
+        <di:waypoint x="562.3611293231528" y="115.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="18.8" width="6.0" x="493.0" y="106.24"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="SequenceFlow_1h3euma" id="Yaoqiang-SequenceFlow_1h3euma">
+        <di:waypoint x="211.35315639113279" y="115.0"/>
+        <di:waypoint x="330.3571428571428" y="117.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="18.8" width="6.0" x="267.5" y="106.95"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
